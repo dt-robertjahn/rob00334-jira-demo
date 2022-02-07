@@ -48,3 +48,15 @@ spec:
             name: jira
             key: update
       subscriptionID: 3d5fa8e4-d5da-4d65-80c3-abbe652a294e
+    - type: sh.keptn.event.create-jira.finished
+      requests:
+        - "curl --request POST --data '{\t\"type\": \"{{.type}}\",\t\"project\":
+          \"{{.data.project}}\",\t\"service\":
+          \"{{.data.service}}\",\t\"stage\":
+          \"{{.data.stage}}\",\t\"shkeptncontext\":
+          \"{{.shkeptncontext}}\",\t\"id\": \"{{.id}}\",\t\"create-jira\":
+          {\t\t\"url\": \"{{ (index .data \"create-jira\").url }}\",\t\t\"key\":
+          \"{{ (index .data \"create-jira\").key}}\",\t\t\"summary\": \"{{
+          (index .data \"create-jira\").summary}}\"\t}}'
+          https://webhook.site/2be34b4b-8a90-47cd-ba9f-a3e237e90765"
+      subscriptionID: 6a0241fd-f112-4db3-8e1f-3cf9abc5213b
