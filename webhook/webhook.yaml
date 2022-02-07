@@ -27,27 +27,6 @@ spec:
             name: bridge
             key: url
       subscriptionID: b9b83b3f-64d8-464d-b303-bfe54d799e60
-    - type: sh.keptn.event.update-jira.triggered
-      requests:
-        - "curl --request POST --data '{\t\"type\": \"{{.type}}\",\t\"project\":
-          \"{{.data.project}}\",\t\"service\":
-          \"{{.data.service}}\",\t\"stage\":
-          \"{{.data.stage}}\",\t\"shkeptncontext\":
-          \"{{.shkeptncontext}}\",\t\"id\": \"{{.id}}\",\t\"create-jira\":
-          {\t\t\"url\": \"{{ (index .data \"create-jira \").url
-          }}\",\t\t\"key\": \"{{ (index .data \"create-jira
-          \").key}}\",\t\t\"summary\": \"{{ (index .data \"create-jira
-          \").summary}}\"\t},\t\"evaluation\": {\t\t\"result\":
-          \"{{.data.evaluation.result}}\",\t\t\"score\":
-          {{.data.evaluation.score}}\t}}'
-          https://automation.atlassian.com/pro/hooks/{{.env.secret_jira_update}\
-          }"
-      envFrom:
-        - name: secret_jira_update
-          secretRef:
-            name: jira
-            key: update
-      subscriptionID: 3d5fa8e4-d5da-4d65-80c3-abbe652a294e
     - type: sh.keptn.event.create-jira.finished
       requests:
         - "curl --request POST --data '{\t\"type\": \"{{.type}}\",\t\"project\":
