@@ -1,0 +1,11 @@
+spec_version: 0.1.4
+indicators:
+  error_rate: metricSelector=builtin:service.errors.server.rate:splitBy():avg:names&entitySelector=type(SERVICE),mzId(-2120541599153649783)
+  proc_count: metricSelector=builtin:tech.generic.processCount:splitBy():avg:names&entitySelector=type(PROCESS_GROUP_INSTANCE),mzId(-2120541599153649783)
+  process_cpu: metricSelector=builtin:tech.generic.cpu.usage:splitBy():avg:names&entitySelector=type(PROCESS_GROUP_INSTANCE),mzId(-2120541599153649783)
+  process_memory: MV2;Byte;metricSelector=builtin:tech.generic.mem.workingSetSize:splitBy():avg:names&entitySelector=type(PROCESS_GROUP_INSTANCE),mzId(-2120541599153649783)
+  response_time_p50: MV2;MicroSecond;metricSelector=builtin:service.response.time:splitBy():percentile(50.000000):names&entitySelector=type(SERVICE),mzId(-2120541599153649783)
+  response_time_p90: MV2;MicroSecond;metricSelector=builtin:service.response.time:splitBy():percentile(90.000000):names&entitySelector=type(SERVICE),mzId(-2120541599153649783)
+  response_time_p95: MV2;MicroSecond;metricSelector=builtin:service.response.time:splitBy():percentile(95.000000):names&entitySelector=type(SERVICE),mzId(-2120541599153649783)
+  svc_tp_min: metricSelector=builtin:service.requestCount.total:splitBy():value:names&entitySelector=type(SERVICE),mzId(-2120541599153649783)
+  svc2svc_calls: metricSelector=builtin:service.nonDbChildCallCount:splitBy():value:names&entitySelector=type(SERVICE),mzId(-2120541599153649783)
