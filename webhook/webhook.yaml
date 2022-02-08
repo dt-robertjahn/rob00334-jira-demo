@@ -19,31 +19,6 @@ spec:
             name: bridge
             key: url
       subscriptionID: 3d5fa8e4-d5da-4d65-80c3-abbe652a294e
-    - type: sh.keptn.event.createJira.triggered
-      requests:
-        - "curl --header 'Content-type: application/json' --request POST --data
-          '{\"type\":\"{{.type}}\",\"shkeptncontext\":\"{{.shkeptncontext}}\",\
-          \"id\":\"{{.id}}\",\"data\":{\"project\":\"{{.data.project}}\",\"serv\
-          ice\":\"{{.data.service}}\",\"stage\":\"{{.data.stage}}\",\"bridge\":\
-          \"{{.env.secret_bridge_url}}/project/{{.data.project}}/sequence/{{.sh\
-          keptncontext}}\",\"dynatraceProblem\":{\"ProblemID\":\"{{.data.dynatr\
-          aceProblem.ProblemID}}\",\"Tags\":\"{{.data.dynatraceProblem.Tags}}\",\
-          \"ProblemTitle\":\"{{.data.dynatraceProblem.ProblemTitle}}\",\"Proble\
-          mURL\":\"{{.data.dynatraceProblem.ProblemURL}}\",\"State\":\"{{.data.\
-          dynatraceProblem.State}}\",\"PID\":\"{{.data.dynatraceProblem.PID}}\",\
-          \"ImpactedEntity\":\"{{.data.dynatraceProblem.ImpactedEntity}}\"}}}'
-          https://automation.atlassian.com/pro/hooks/{{.env.secret_jira_create}\
-          }"
-      envFrom:
-        - name: secret_jira_create
-          secretRef:
-            name: jira
-            key: create
-        - name: secret_bridge_url
-          secretRef:
-            name: bridge
-            key: url
-      subscriptionID: b9b83b3f-64d8-464d-b303-bfe54d799e60
     - type: sh.keptn.event.createJira.finished
       requests:
         - "curl --request POST --data '{  \"note\": \"webhook.site
