@@ -4,29 +4,6 @@ metadata:
   name: webhook-configuration
 spec:
   webhooks:
-    - type: sh.keptn.event.create-jira.triggered
-      requests:
-        - "curl --header 'Content-type: application/json' --request POST --data
-          '{\"type\":\"{{.type}}\",\"project\":\"{{.data.project}}\",\"service\
-          \":\"{{.data.service}}\",\"stage\":\"{{.data.stage}}\",\"shkeptnconte\
-          xt\":\"{{.shkeptncontext}}\",\"id\":\"{{.id}}\",\"bridge\":\"{{.env.s\
-          ecret_bridge_url}}/project/{{.data.project}}/sequence/{{.shkeptnconte\
-          xt}}\",\"ProblemID\":\"{{.data.ProblemID}}\",\"Tags\":\"{{.data.Tags}}\
-          \",\"ImpactedEntity\":\"{{.data.ImpactedEntity}}\",\"ProblemTitle\":\
-          \"{{.data.ProblemTitle}}\",\"ProblemURL\":\"{{.data.ProblemURL}}\",\"\
-          State\":\"{{.data.State}}\"}'
-          https://automation.atlassian.com/pro/hooks/{{.env.secret_jira_create}\
-          }"
-      envFrom:
-        - name: secret_jira_create
-          secretRef:
-            name: jira
-            key: create
-        - name: secret_bridge_url
-          secretRef:
-            name: bridge
-            key: url
-      subscriptionID: b9b83b3f-64d8-464d-b303-bfe54d799e60
     - type: sh.keptn.event.update-jira.triggered
       requests:
         - "curl --request POST --data '{\t\"type\": \"{{.type}}\",\t\"project\":
