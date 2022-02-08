@@ -71,3 +71,25 @@ spec:
             name: bridge
             key: url
       subscriptionID: 9f9782d2-c1da-4f11-a2a8-de9c20bb02c4
+    - type: sh.keptn.event.createJira.finished
+      requests:
+        - "curl --request POST --data '{  \"note\": \"webhook.site
+          subscription\",\t\t\"type\": \"{{.type}}\",\t\"shkeptncontext\":
+          \"{{.shkeptncontext}}\",\t\"id\": \"{{.id}}\",    \"data\":
+          {        \"project\": \"{{.data.project}}\",        \"service\":
+          \"{{.data.service}}\",        \"stage\":
+          \"{{.data.stage}}\",        \"bridge\":
+          \"{{.data.bridge}}\",        \"dynatraceProblem\":
+          {            \"ProblemID\":
+          \"{{.data.dynatraceProblem.ProblemID}}\",            \"Tags\":
+          \"{{.data.dynatraceProblem.Tags}}\",            \"ProblemTitle\":
+          \"{{.data.dynatraceProblem.ProblemTitle}}\",            \"ProblemURL\
+          \": \"{{.data.dynatraceProblem.ProblemURL}}\",            \"State\":
+          \"{{.data.dynatraceProblem.State}}\",            \"PID\":\"{{.data.dy\
+          natraceProblem.PID}}\",            \"ImpactedEntity\":\"{{.data.Impac\
+          tedEntity}}\"        },        \"createJira\": {            \"url\":
+          \"{{ .data.createJira.url }}\",            \"key\": \"{{
+          .data.createJira.key }}\",            \"summary\": \"{{
+          .data.createJira.summary }}\"        },    }}'
+          https://webhook.site/2be34b4b-8a90-47cd-ba9f-a3e237e90765"
+      subscriptionID: 6a0241fd-f112-4db3-8e1f-3cf9abc5213b
