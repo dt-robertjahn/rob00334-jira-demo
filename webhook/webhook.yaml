@@ -79,3 +79,14 @@ spec:
             name: bridge
             key: url
       subscriptionID: 6a0241fd-f112-4db3-8e1f-3cf9abc5213b
+    - type: sh.keptn.event.createJira.triggered
+      requests:
+        - curl --request POST --data '{"note":"webhook.site
+          subscription","type":"{{.type}}","shkeptncontext":"{{.shkeptncontext}}","id":"{{.id}}","data":{"project":"{{.data.project}}","service":"{{.data.service}}","stage":"{{.data.stage}}","bridge":"{{.env.secret_bridge_url}}/project/{{.data.project}}/sequence/{{.shkeptncontext}}","dynatraceProblem":{"ProblemID":"{{.data.dynatraceProblem.ProblemID}}","Tags":"{{.data.dynatraceProblem.Tags}}","ProblemTitle":"{{.data.dynatraceProblem.ProblemTitle}}","ProblemURL":"{{.data.dynatraceProblem.ProblemURL}}","State":"{{.data.dynatraceProblem.State}}","PID":"{{.data.dynatraceProblem.PID}}","ImpactedEntities":"{{.data.dynatraceProblem.ImpactedEntities}}"}}}'
+          https://webhook.site/2be34b4b-8a90-47cd-ba9f-a3e237e90765
+      envFrom:
+        - name: secret_bridge_url
+          secretRef:
+            name: bridge
+            key: url
+      subscriptionID: 9f9782d2-c1da-4f11-a2a8-de9c20bb02c4
