@@ -52,3 +52,39 @@ spec:
             name: bridge
             key: url
       subscriptionID: 6a0241fd-f112-4db3-8e1f-3cf9abc5213b
+    - type: sh.keptn.event.updateJira.triggered
+      requests:
+        - "curl --request POST --data '{\t\"type\":
+          \"{{.type}}\",\t\"shkeptncontext\": \"{{.shkeptncontext}}\",\t\"id\":
+          \"{{.id}}\",    \"data\": {        \"project\":
+          \"{{.data.project}}\",        \"service\":
+          \"{{.data.service}}\",        \"stage\":
+          \"{{.data.stage}}\",        \"bridge\":
+          \"{{webhookData.data.bridge.url}}/project/{{webhookData.data.project}\
+          }/sequence/{{webhookData.data.shkeptncontext}}\",\",        \"dynatra\
+          ceProblem\": {            \"ProblemID\":
+          \"{{.data.dynatraceProblem.ProblemID}}\",            \"Tags\":
+          \"{{.data.dynatraceProblem.Tags}}\",            \"ProblemTitle\":
+          \"{{.data.dynatraceProblem.ProblemTitle}}\",            \"ProblemURL\
+          \": \"{{.data.dynatraceProblem.ProblemURL}}\",            \"State\":
+          \"{{.data.dynatraceProblem.State}}\",            \"PID\":\"{{.data.dy\
+          natraceProblem.PID}}\",            \"ImpactedEntity\":\"{{webhookData\
+          .data.dynatraceProblem.ImpactedEntity}}\"        },        \"createJi\
+          ra\": {            \"url\": \"{{ .data.createJira.url
+          }}\",            \"key\": \"{{ .data.createJira.key
+          }}\",            \"summary\": \"{{ .data.createJira.summary
+          }}\"        },        \"evaluation\": {            \"result\":
+          \"{{.data.evaluation.result}}\",            \"score\":
+          {{.data.evaluation.score}}        }    }}'
+          https://automation.atlassian.com/pro/hooks/{{.env.secret_jira_update}\
+          }"
+      envFrom:
+        - name: secret_jira_update
+          secretRef:
+            name: jira
+            key: update
+        - name: secret_bridge_url
+          secretRef:
+            name: bridge
+            key: url
+      subscriptionID: 3d5fa8e4-d5da-4d65-80c3-abbe652a294e
