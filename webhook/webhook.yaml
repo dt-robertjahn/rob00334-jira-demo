@@ -43,3 +43,29 @@ spec:
           }}","summary":"{{ .data.createJira.summary }}"}}}'
           https://webhook.site/2be34b4b-8a90-47cd-ba9f-a3e237e90765
       subscriptionID: 6a0241fd-f112-4db3-8e1f-3cf9abc5213b
+    - type: sh.keptn.event.createJira.triggered
+      requests:
+        - "curl --header 'Content-type: application/json' --request POST --data
+          '{\"type\":\"{{.type}}\",\"shkeptncontext\":\"{{.shkeptncontext}}\",\
+          \"id\":\"{{.id}}\",\"data\":{\"project\":\"{{.data.project}}\",\"serv\
+          ice\":\"{{.data.service}}\",\"stage\":\"{{.data.stage}}\",\"createJira\
+          \":{\"bridge\":\"{{.env.secret_bridge_url}}/project/{{.data.project}}\
+          /sequence/{{.shkeptncontext}}\"},\"dynatraceProblem\":{\"ProblemID\":\
+          \"{{.data.dynatraceProblem.ProblemID}}\",\"Tags\":\"{{.data.dynatrace\
+          Problem.Tags}}\",\"ProblemTitle\":\"{{.data.dynatraceProblem.ProblemT\
+          itle}}\",\"ProblemURL\":\"{{.data.dynatraceProblem.ProblemURL}}\",\"S\
+          tate\":\"{{.data.dynatraceProblem.State}}\",\"PID\":\"{{.data.dynatra\
+          ceProblem.PID}}\",\"ImpactedEntity\":\"{{.data.dynatraceProblem.Impac\
+          tedEntity}}\"}}}'
+          https://automation.atlassian.com/pro/hooks/{{.env.secret_jira_create}\
+          }"
+      envFrom:
+        - name: secret_jira_create
+          secretRef:
+            name: jira
+            key: create
+        - name: secret_bridge_url
+          secretRef:
+            name: bridge
+            key: url
+      subscriptionID: b9b83b3f-64d8-464d-b303-bfe54d799e60
