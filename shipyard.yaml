@@ -6,10 +6,10 @@ spec:
   stages:
     - name: "production"
       sequences:
-      - name: "problem-notification"
+      - name: "problemNotification"
         tasks:
-        - name: "create-jira"
+        - name: "createJira"
         - name: "evaluation"
           properties:
             timeframe: "5m"
-        - name: "update-jira"
+        - name: "updateJira"
